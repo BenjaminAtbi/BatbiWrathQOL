@@ -1,0 +1,10 @@
+﻿{
+  "Id": "BatbiWrathQOL",
+  "DisplayName": "Batbi Wrath QOL",
+  "Author": "Belithioben",
+  "Version": "1.0.0",
+  "ManagerVersion": "0.21.3",
+  "Requirements": [],
+  "AssemblyName": "BatbiWrathQOL.dll",
+  "EntryMethod": "BatbiWrathQOL.Main.Load"
+}

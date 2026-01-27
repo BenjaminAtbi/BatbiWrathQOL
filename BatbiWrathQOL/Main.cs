@@ -3,7 +3,7 @@ using System;
 using System.Reflection;
 using UnityModManagerNet;
 
-namespace UIChanges
+namespace BatbiWrathQOL
 {
     internal static class Main
     {

@@ -2,26 +2,34 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-  <LangVersion>8.0</LangVersion>
-    <RootNamespace>UIChanges</RootNamespace>
+	<LangVersion>8.0</LangVersion>
+    <RootNamespace>BatbiWrathQOL</RootNamespace>
     <Nullable>enable</Nullable>
-	  <WrathInstallDir>E:\SteamLibrary\steamapps\common\Pathfinder Second Adventure</WrathInstallDir>
-	  <BaseOutputPath>E:\Projects\WrathUIChanges\UI Changes\bin</BaseOutputPath>
-
+    <WrathInstallDir>E:\SteamLibrary\steamapps\common\Pathfinder Second Adventure</WrathInstallDir>
+    <BaseOutputPath>E:\Projects\WrathUIChanges\BatbiWrathQOL\bin</BaseOutputPath>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>True</Optimize>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AssemblyPublicizer" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityModManager\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\SpontaneousGyronna\SpontaneousGyronna\lib\Assembly-CSharp_public.dll</HintPath>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\lib\Assembly-CSharp_public.dll</HintPath>
     </Reference>
     <Reference Include="Owlcat.Runtime.Core">
       <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
@@ -38,6 +46,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityModManager">
       <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
     </Reference>
@@ -50,5 +61,12 @@
 	<Target Name="CopyDLLs" AfterTargets="Build">
 		<Message Text="copying to Wrath folder" Importance="High" />
 		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)info.json" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
+	</Target>
+	<Target Name="Publicize" AfterTargets="Clean">
+		<ItemGroup>
+			<Assemblies Include="$(WrathInstallDir)\Wrath_Data\Managed\Assembly-CSharp.dll" />
+		</ItemGroup>
+
+		<PublicizeTask InputAssemblies="@(Assemblies)" OutputDir="$(SolutionDir)lib/" />
 	</Target>
 </Project>
