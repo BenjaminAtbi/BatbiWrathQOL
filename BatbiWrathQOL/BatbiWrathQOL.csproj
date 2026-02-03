@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-	<LangVersion>8.0</LangVersion>
+    <TargetFramework>net481</TargetFramework>
+	<LangVersion>Latest</LangVersion>
     <RootNamespace>BatbiWrathQOL</RootNamespace>
     <Nullable>enable</Nullable>
     <WrathInstallDir>E:\SteamLibrary\steamapps\common\Pathfinder Second Adventure</WrathInstallDir>
