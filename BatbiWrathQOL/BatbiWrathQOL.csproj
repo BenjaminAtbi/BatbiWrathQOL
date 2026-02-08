@@ -29,7 +29,7 @@
       <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\lib\Assembly-CSharp_public.dll</HintPath>
+      <HintPath>.\lib\Assembly-CSharp_public.dll</HintPath>
     </Reference>
     <Reference Include="Owlcat.Runtime.Core">
       <HintPath>..\..\..\SteamLibrary\steamapps\common\Pathfinder Second Adventure\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
