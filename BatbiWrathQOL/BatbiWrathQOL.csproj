@@ -6,6 +6,7 @@
     <RootNamespace>BatbiWrathQOL</RootNamespace>
     <Nullable>enable</Nullable>
     <WrathInstallDir>E:\SteamLibrary\steamapps\common\Pathfinder Second Adventure</WrathInstallDir>
+	<WrathModLibDir>E:\Projects\WrathModLib</WrathModLibDir>
     <BaseOutputPath>E:\Projects\WrathUIChanges\BatbiWrathQOL\bin</BaseOutputPath>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -29,7 +30,7 @@
       <HintPath>$(WrathInstallDir)\Wrath_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>.\lib\Assembly-CSharp_public.dll</HintPath>
+      <HintPath>$(WrathModLibDir)\Publicized\Assembly-CSharp_public.dll</HintPath>
     </Reference>
     <Reference Include="Owlcat.Runtime.Core">
       <HintPath>$(WrathInstallDir)\Wrath_Data\Managed\Owlcat.Runtime.Core.dll</HintPath>
@@ -53,7 +54,7 @@
       <HintPath>$(WrathInstallDir)\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
     </Reference>
 	<Reference Include="WrathModLib">
-		<HintPath>..\..\WrathModLib\bin\Release\net481\WrathModLib.dll</HintPath>
+		<HintPath>$(WrathModLibDir)\bin\Release\net481\WrathModLib.dll</HintPath>
 	</Reference>
   </ItemGroup> 
 	<ItemGroup>
@@ -64,7 +65,7 @@
 	<Target Name="CopyDLLs" AfterTargets="Build">
 		<Message Text="copying to Wrath folder" Importance="High" />
 		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)info.json" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
-		<Copy SourceFiles="..\..\WrathModLib\bin\Release\net481\WrathModLib.dll" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
+		<Copy SourceFiles="$(WrathModLibDir)\bin\Release\net481\WrathModLib.dll" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
 	</Target>
 	<Target Name="Publicize" AfterTargets="Clean">
 		<ItemGroup>
