@@ -52,6 +52,9 @@
     <Reference Include="UnityModManager">
       <HintPath>$(WrathInstallDir)\Wrath_Data\Managed\UnityModManager\UnityModManager.dll</HintPath>
     </Reference>
+	<Reference Include="WrathModLib">
+		<HintPath>..\..\WrathModLib\bin\Release\net481\WrathModLib.dll</HintPath>
+	</Reference>
   </ItemGroup> 
 	<ItemGroup>
 		<None Update="info.json">
@@ -61,6 +64,7 @@
 	<Target Name="CopyDLLs" AfterTargets="Build">
 		<Message Text="copying to Wrath folder" Importance="High" />
 		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)info.json" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
+		<Copy SourceFiles="..\..\WrathModLib\bin\Release\net481\WrathModLib.dll" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
 	</Target>
 	<Target Name="Publicize" AfterTargets="Clean">
 		<ItemGroup>
