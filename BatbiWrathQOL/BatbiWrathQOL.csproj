@@ -6,6 +6,7 @@
     <RootNamespace>BatbiWrathQOL</RootNamespace>
     <Nullable>enable</Nullable>
     <WrathInstallDir>E:\SteamLibrary\steamapps\common\Pathfinder Second Adventure</WrathInstallDir>
+	<DebugInstallDir>C:\Users\User\Documents\Unity2Debug\debug env</DebugInstallDir>
 	<WrathModLibDir>E:\Projects\WrathModLib</WrathModLibDir>
     <BaseOutputPath>E:\Projects\WrathUIChanges\BatbiWrathQOL\bin</BaseOutputPath>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
@@ -66,6 +67,11 @@
 		<Message Text="copying to Wrath folder" Importance="High" />
 		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)info.json" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
 		<Copy SourceFiles="$(WrathModLibDir)\bin\Release\net481\WrathModLib.dll" DestinationFolder="$(WrathInstallDir)\Mods\$(ProjectName)" />
+	</Target>
+	<Target Name="CopyDLLsDebug" AfterTargets="Build" Condition="'$(Condition)' == 'Debug'">
+		<Message Text="copying to Wrath Debug folder" Importance="High" />
+		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll;$(TargetDir)info.json" DestinationFolder="$(DebugInstallDir)\Mods\$(ProjectName)" />
+		<Copy SourceFiles="$(WrathModLibDir)\bin\Release\net481\WrathModLib.dll" DestinationFolder="$(DebugInstallDir)\Mods\$(ProjectName)" />
 	</Target>
 	<Target Name="Publicize" AfterTargets="Clean">
 		<ItemGroup>

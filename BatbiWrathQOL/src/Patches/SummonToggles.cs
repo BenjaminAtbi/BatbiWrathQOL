@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityUIControls;
+using WrathModLib;
 
 namespace BatbiWrathQOL.src.Patches
 {
@@ -21,7 +23,7 @@ namespace BatbiWrathQOL.src.Patches
             static void Prefix(ContextActionSpawnMonster __instance)
             {
                 if (!Main.Enabled) return;
-                __instance.AfterSpawn.Actions = __instance.AfterSpawn.Actions.Concat(new[] { new ContextActionToggleAbilities() }).ToArray();
+                WML_Util.ArrayAdd(ref __instance.AfterSpawn.Actions, new ContextActionToggleAbilities());
             }
         }
 
@@ -34,6 +36,7 @@ namespace BatbiWrathQOL.src.Patches
 
             public override void RunAction()
             {
+                if (Target == null || Target.Unit == null) return;
                 if (Target.Unit.IsSummoned())
                 {
                     foreach(var ability in Target.Unit.ActivatableAbilities){
